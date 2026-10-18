@@ -1,0 +1,52 @@
+name: Prepare transparent Sanctuary logo
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/prepare-sanctuary-logo.yml'
+      - 'assets/HAYVN-Sanctuary-Approved-Logo-1.png'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  prepare-logo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pillow
+      - name: Remove black matte while preserving gold artwork
+        run: |
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          source=Path('assets/HAYVN-Sanctuary-Approved-Logo-1.png')
+          image=Image.open(source).convert('RGB')
+          px=image.load()
+          out=Image.new('RGBA',image.size)
+          dst=out.load()
+          for y in range(image.height):
+              for x in range(image.width):
+                  r,g,b=px[x,y]
+                  brightness=max(r,g,b)
+                  # Black background to alpha, smooth antialiased edges.
+                  alpha=max(0,min(255,round((brightness-8)*255/55)))
+                  if alpha:
+                      factor=255/alpha
+                      dst[x,y]=(min(255,int(r*factor)),min(255,int(g*factor)),min(255,int(b*factor)),alpha)
+                  else:
+                      dst[x,y]=(0,0,0,0)
+          out.save('assets/hayvn-sanctuary-logo-transparent.png',optimize=True)
+          print('Generated true RGBA logo:',out.size)
+          PY
+      - name: Commit transparent logo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/hayvn-sanctuary-logo-transparent.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate transparent approved Sanctuary logo"
+            git push
+          fi
