@@ -195,9 +195,16 @@ select.field{font:14px 'DM Sans',sans-serif!important;min-height:47px}
 .music-volume{display:flex;align-items:center;justify-content:center;gap:13px;margin:0 auto;color:#dbc18d;font:10px 'DM Sans',sans-serif;letter-spacing:.14em}
 .music-volume input{width:115px;accent-color:#c9a36a;cursor:pointer}
 .music-volume output{min-width:28px;text-align:right;color:#e7d3b0}
+</style><style id="sanctuary-header-and-music-2026">
+.lux-header{min-height:100px!important;padding-top:6px!important;padding-bottom:6px!important}
+.lux-brand{display:flex!important;align-items:center!important;justify-content:flex-start!important;width:220px!important;max-width:40vw!important;min-height:80px!important;overflow:visible!important}
+.lux-header-logo{display:block!important;width:190px!important;max-width:100%!important;height:85px!important;object-fit:contain!important;object-position:left center!important;mix-blend-mode:normal!important;filter:drop-shadow(0 0 12px #cda35e2a)!important}
+.approved-logo{width:clamp(310px,47vw,535px)!important;max-width:82vw!important}
+.ambient-entrance{border-color:#c6a26b99!important}
+@media(max-width:700px){.lux-header{min-height:77px!important;padding:3px 12px!important}.lux-brand{width:130px!important;max-width:38vw!important;min-height:65px!important}.lux-header-logo{width:132px!important;height:70px!important}.approved-logo{width:min(385px,88vw)!important;max-width:88vw!important}.hero-content{padding-top:15px!important}.lux-nav-cta{padding:10px 9px!important}}
 </style></head><body>
-<header class="lux-header"><a class="lux-brand" href="#home" aria-label="HAYVN Sanctuary home"><span class="lux-crescent">☾</span><span>HAYVN<small>SANCTUARY</small></span></a><nav class="lux-nav"><a class="lux-nav-text" href="#rooms">THE SPACES</a><a class="lux-nav-text" href="#experience" data-room-link="daily">DAILY RITUAL</a><a class="lux-nav-cta" href="#rooms">ENTER THE SANCTUARY <span aria-hidden="true">↗</span></a></nav></header>
-<main><section class="hero" id="home"><div class="hero-shade"></div><div class="hero-content"><p class="lux-overline">AN IMMERSIVE EXPERIENCE BY HAYVN STUDIO</p><img class="approved-logo" src="./assets/hayvn-sanctuary-logo-transparent.png" alt="HAYVN Sanctuary — official approved gold crescent and forest emblem" width="760" height="760" fetchpriority="high"><p class="tagline">Somewhere to return to yourself.</p><p class="lux-intro">A PRIVATE RETREAT FOR STILLNESS, SOUND &amp; SELF-DISCOVERY</p><div class="entrance-actions"><a class="goldbtn lux-enter" id="enterSanctuary" href="#rooms">ENTER SANCTUARY <span aria-hidden="true">↗</span></a><button type="button" id="entranceAudio" class="ambient-entrance" aria-pressed="false"><span aria-hidden="true">♫</span> PLAY MUSIC</button></div><label class="music-volume" for="sanctuaryMusicVolume">MUSIC VOLUME <input id="sanctuaryMusicVolume" type="range" min="0" max="100" value="42" aria-label="Sanctuary music volume"><output id="sanctuaryMusicVolumeValue">42%</output></label><p class="sound-disclaimer" id="soundNotice">Your Sanctuary soundtrack · Tap Enter to begin listening</p></div><div class="scrollhint">DISCOVER THE SPACES <span aria-hidden="true">↓</span></div></section>
+<header class="lux-header"><a class="lux-brand" href="#home" aria-label="HAYVN Sanctuary home"><img class="lux-header-logo" src="./assets/hayvn-sanctuary-logo-transparent.png" alt="HAYVN Sanctuary official gold logo"></a><nav class="lux-nav"><a class="lux-nav-text" href="#rooms">THE SPACES</a><a class="lux-nav-text" href="#experience" data-room-link="daily">DAILY RITUAL</a><a class="lux-nav-cta" href="#rooms">ENTER THE SANCTUARY <span aria-hidden="true">↗</span></a></nav></header>
+<main><section class="hero" id="home"><div class="hero-shade"></div><div class="hero-content"><p class="lux-overline">AN IMMERSIVE EXPERIENCE BY HAYVN STUDIO</p><img class="approved-logo" src="./assets/hayvn-sanctuary-logo-transparent.png" alt="HAYVN Sanctuary — official approved gold crescent and forest emblem" width="760" height="760" fetchpriority="high"><p class="tagline">Somewhere to return to yourself.</p><p class="lux-intro">A PRIVATE RETREAT FOR STILLNESS, SOUND &amp; SELF-DISCOVERY</p><div class="entrance-actions"><a class="goldbtn lux-enter" id="enterSanctuary" href="#rooms">ENTER SANCTUARY <span aria-hidden="true">↗</span></a><button type="button" id="entranceAudio" class="ambient-entrance" aria-pressed="false" aria-label="Mute Sanctuary music"><span aria-hidden="true">♫</span> MUTE MUSIC</button></div><label class="music-volume" for="sanctuaryMusicVolume">MUSIC VOLUME <input id="sanctuaryMusicVolume" type="range" min="0" max="100" value="42" aria-label="Sanctuary music volume"><output id="sanctuaryMusicVolumeValue">42%</output></label><p class="sound-disclaimer" id="soundNotice">Your Sanctuary soundtrack · Automatic playback where supported</p></div><div class="scrollhint">DISCOVER THE SPACES <span aria-hidden="true">↓</span></div></section>
 <section class="section" id="rooms"><div class="section-heading"><div class="eyebrow">YOUR PRIVATE RETREAT</div><h2 class="serif">Five spaces. One return.</h2><p>Enter whichever room you need today. There is no right way to begin.</p></div><div class="rooms">
 <button class="room" data-room="stillness"><div><span class="number">01</span><h3>The Stillness Room</h3><p>Breathe · Rest · Reset <span class="arrow">→</span></p></div></button>
 <button class="room" data-room="atmosphere"><div><span class="number">02</span><h3>The Atmosphere Room</h3><p>Listen · Immerse · Escape <span class="arrow">→</span></p></div></button>
@@ -286,31 +293,21 @@ const journal=document.getElementById('journal');if(journal)journal.setAttribute
 </script><script id="sanctuary-entrance-ambience">
 (()=>{'use strict';
 const track=new Audio('./audio/haynsanctuarymusic.mp3');
-track.loop=true;track.autoplay=true;track.preload='auto';track.volume=0.42;
-const button=document.getElementById('entranceAudio');
-const enter=document.getElementById('enterSanctuary');
-const notice=document.getElementById('soundNotice');
-const audioTag=document.createElement('link');audioTag.rel='preload';audioTag.as='audio';audioTag.href='./audio/haynsanctuarymusic.mp3';document.head.appendChild(audioTag);
-let wanted=true;
-const setButton=()=>{if(!button)return;const active=!track.paused;button.setAttribute('aria-pressed',String(active));button.innerHTML=active?'<span aria-hidden="true">♫</span> PAUSE MUSIC':'<span aria-hidden="true">♫</span> PLAY MUSIC'};
-async function play(){
- wanted=true;
- try{await track.play();setButton();if(notice)notice.textContent='Your Sanctuary soundtrack · Playing softly in the background'}
- catch(e){setButton();if(notice)notice.textContent='Tap Play Music to hear your Sanctuary soundtrack'}
-}
-function pause(){wanted=false;track.pause();setButton();if(notice)notice.textContent='Music paused · Resume whenever you wish'}
-button?.addEventListener('click',()=>track.paused?play():pause());
-enter?.addEventListener('click',()=>{if(wanted&&track.paused)play()});
-track.addEventListener('playing',setButton);track.addEventListener('pause',setButton);
-track.addEventListener('error',()=>{if(notice)notice.textContent='Soundtrack unavailable · Please try reloading';if(button)button.textContent='MUSIC UNAVAILABLE'});
-// Attempt autoplay, while respecting browser restrictions and user pause choices.
-play();
-// A muted autoplay start is allowed by most mobile browsers; unmute on the first real gesture.
-// Never override a visitor who deliberately pauses the soundtrack.
-const activate=()=>{if(!wanted)return;if(track.muted)track.muted=false;if(track.paused)play()};
-['pointerdown','touchstart','keydown'].forEach(type=>document.addEventListener(type,activate,{capture:true,passive:true}));
-window.addEventListener('pageshow',()=>{if(wanted&&track.paused)play()});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){track.pause();setButton()}else if(wanted){play()}});
-const volumeSlider=document.getElementById('sanctuaryMusicVolume');const volumeOutput=document.getElementById('sanctuaryMusicVolumeValue');volumeSlider?.addEventListener('input',()=>{track.volume=Number(volumeSlider.value)/100;if(volumeOutput)volumeOutput.textContent=volumeSlider.value+'%'});window.HayvnSanctuaryMusic={play,pause,get volume(){return track.volume},set volume(v){track.volume=Math.max(0,Math.min(1,Number(v)||0))}};
+track.loop=true;track.autoplay=true;track.preload='auto';track.volume=.42;
+const button=document.getElementById('entranceAudio'),enter=document.getElementById('enterSanctuary'),notice=document.getElementById('soundNotice');
+let desired=true,attempting=false;
+function ui(){const muted=!desired;button.setAttribute('aria-pressed',String(muted));button.setAttribute('aria-label',muted?'Unmute Sanctuary music':'Mute Sanctuary music');button.innerHTML=muted?'<span aria-hidden="true">♫</span> UNMUTE MUSIC':'<span aria-hidden="true">♫</span> MUTE MUSIC'}
+async function start(){if(!desired||attempting||!track.paused)return;attempting=true;try{await track.play();if(notice)notice.textContent='Sanctuary music · Playing'}catch(e){if(notice)notice.textContent='Your browser requires one interaction before sound can begin'}finally{attempting=false;ui()}}
+function mute(){desired=false;track.pause();ui();if(notice)notice.textContent='Sanctuary music · Muted'}
+function unmute(){desired=true;ui();start()}
+button.addEventListener('click',()=>desired?mute():unmute());
+enter?.addEventListener('click',()=>{if(desired)start()});
+['pointerdown','touchstart','keydown'].forEach(type=>document.addEventListener(type,()=>{if(desired)start()},{capture:true,passive:true}));
+window.addEventListener('pageshow',()=>{if(desired)start()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){track.pause()}else if(desired){start()}});
+const slider=document.getElementById('sanctuaryMusicVolume'),output=document.getElementById('sanctuaryMusicVolumeValue');slider?.addEventListener('input',()=>{track.volume=Number(slider.value)/100;if(output)output.textContent=slider.value+'%'});
+track.addEventListener('error',()=>{if(notice)notice.textContent='Music could not be loaded';});
+ui();start();
+window.HayvnSanctuaryMusic={play:unmute,pause:mute,get volume(){return track.volume},set volume(v){track.volume=Math.max(0,Math.min(1,Number(v)||0))}};
 })();
 </script></body></html>
