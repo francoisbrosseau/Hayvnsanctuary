@@ -21,6 +21,31 @@ header{background:linear-gradient(#030302ed,#03030266 70%,transparent);padding-t
 .section-heading h2{color:#e7c78d}.room{box-shadow:0 16px 48px #0009}.room:before{filter:saturate(.65) brightness(.75)}
 @media(max-width:520px){header{padding:12px 18px}.brand-logo{width:100px;max-height:68px}.hero-logo{width:78vw;max-height:205px}.hero h2{font-size:24px;letter-spacing:.24em}.hero-content{padding-top:140px}}
 @media(prefers-reduced-motion:reduce){body,.hero-content,.hero-logo{animation:none!important}}
+</style><style>
+/* Cinematic entrance and isolated brand lockup */
+:root{--gold:#d7ad5f}
+body{background:#030302}
+.hero{background-image:linear-gradient(180deg,#030302a6 0%,#080a0878 38%,#030302 99%),url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2400&q=88');background-position:center;background-size:cover}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 50% 45%,transparent 10%,#030302a8 100%)}
+.hero-content{opacity:0;animation:arrival 2.5s ease .35s forwards}
+.hero-cutout,.brand-cutout{display:block;overflow:hidden;position:relative;isolation:isolate}
+.hero-cutout{width:min(460px,75vw);height:clamp(160px,33vw,255px);margin:0 auto 18px;mask-image:linear-gradient(to bottom,transparent 0%,#000 6%,#000 92%,transparent 100%)}
+.hero-logo{position:absolute!important;left:50%;top:50%;transform:translate(-50%,-50%);width:100%!important;height:100%!important;max-height:none!important;object-fit:cover!important;mix-blend-mode:screen;filter:contrast(1.3) drop-shadow(0 0 18px #d7ad5f55)}
+.brand-cutout{width:128px;height:70px;margin-bottom:2px}
+.brand-logo{position:absolute;inset:0;width:100%!important;height:100%!important;max-height:none!important;object-fit:cover!important;mix-blend-mode:screen;filter:contrast(1.35)}
+header{background:linear-gradient(#030302dc,#03030205);align-items:center}
+.brand small{letter-spacing:.26em;color:#dfbd7c}
+.hero h2{font-size:clamp(27px,4.5vw,49px);letter-spacing:.26em;text-shadow:0 0 20px #000}
+.hero .eyebrow{letter-spacing:.34em}
+.hero .tagline{font-size:clamp(20px,2.6vw,31px);line-height:1.5}
+.hero .goldbtn{display:inline-block;margin-top:10px;background:linear-gradient(130deg,#a07b3d,#4a371c);border:1px solid #e7c98b;box-shadow:0 0 40px #d7ad5f25;transition:transform .35s,box-shadow .35s}
+.hero .goldbtn:hover{transform:translateY(-3px);box-shadow:0 0 60px #d7ad5f55}
+.room{min-height:405px;border:1px solid #d7ad5f3b;box-shadow:0 20px 50px #0005}
+.section-heading h2{color:#f4e5c8}
+.section-heading .eyebrow{color:#d7ad5f}
+@keyframes arrival{0%{opacity:0;transform:translateY(24px);filter:blur(9px)}70%{filter:blur(0)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:520px){.brand-cutout{width:96px;height:53px}.hero-cutout{width:76vw;height:170px}.hero{background-position:center}.hero-content{padding-top:130px}.hero h2{letter-spacing:.17em}.room{min-height:290px}}
+@media(prefers-reduced-motion:reduce){.hero-content{opacity:1;animation:none}}
 </style></head><body>
 <header><a class="brand" href="#home" aria-label="HAYVN Sanctuary home"><img src="./assets/hayvn-transparent.png" alt="HAYVN Studio official gold logo" class="brand-logo"><small>S A N C T U A R Y</small></a><nav class="nav"><a href="#rooms">THE SANCTUARY</a><a href="#rooms">EXPERIENCES</a><a href="#daily">DAILY RITUAL</a><a class="outline" href="#rooms">ENTER SANCTUARY ↗</a></nav></header>
 <main><section class="hero" id="home"><div class="hero-content"><div class="eyebrow">An experience by HAYVN Studio</div><img class="hero-logo" src="./assets/hayvn-transparent.png" alt="HAYVN official gold emblem and wordmark"><h1 class="visually-hidden">HAYVN</h1><h2>SANCTUARY</h2><p class="tagline">Somewhere to return to yourself.</p><p class="intro">A SPACE TO BREATHE · REFLECT · EXPLORE · BE</p><a class="goldbtn" href="#rooms">ENTER SANCTUARY &nbsp; →</a></div><div class="scrollhint">SCROLL TO EXPLORE ↓</div></section>
