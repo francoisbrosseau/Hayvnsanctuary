@@ -46,6 +46,33 @@ header{background:linear-gradient(#030302dc,#03030205);align-items:center}
 @keyframes arrival{0%{opacity:0;transform:translateY(24px);filter:blur(9px)}70%{filter:blur(0)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
 @media(max-width:520px){.brand-cutout{width:96px;height:53px}.hero-cutout{width:76vw;height:170px}.hero{background-position:center}.hero-content{padding-top:130px}.hero h2{letter-spacing:.17em}.room{min-height:290px}}
 @media(prefers-reduced-motion:reduce){.hero-content{opacity:1;animation:none}}
+</style><style id="brand-emergency-fix">
+/* Preserve the FULL original HAYVN logo; never crop, scale-cover or screen-blend. */
+.brand-cutout,.hero-cutout{display:block!important;position:relative!important;overflow:visible!important;isolation:auto!important;mask-image:none!important;clip-path:none!important;background:transparent!important}
+.brand-cutout{width:105px!important;height:auto!important;aspect-ratio:1/1;margin:0 auto!important}
+.hero-cutout{width:min(440px,68vw)!important;height:auto!important;aspect-ratio:1/1;margin:0 auto 5px!important}
+.brand-logo,.hero-logo{position:static!important;display:block!important;inset:auto!important;left:auto!important;top:auto!important;transform:none!important;width:100%!important;height:100%!important;max-height:none!important;object-fit:contain!important;mix-blend-mode:normal!important;filter:none!important;border:0!important;box-shadow:none!important}
+.hero-logo{filter:drop-shadow(0 0 20px #d7ad5f20)!important}
+.hero-content{width:100%;max-width:850px;padding:140px 22px 110px}
+.hero h2{font-size:clamp(26px,4vw,44px);margin:0 0 14px;letter-spacing:.22em}
+.hero .intro{font-size:clamp(9px,1.4vw,11px);letter-spacing:.16em;line-height:1.9}
+header{padding:16px clamp(14px,4vw,60px)}
+header .brand{width:105px;flex-shrink:0}
+header .brand small{font-size:8px;letter-spacing:.13em}
+header .nav .outline{white-space:nowrap}
+@media(max-width:520px){
+header{padding:10px 13px;gap:8px}
+header .brand{width:70px}
+.brand-cutout{width:65px!important}
+header .brand small{font-size:7px;letter-spacing:.07em}
+header .nav .outline{font-size:9px;padding:10px 11px;letter-spacing:.05em}
+.hero-content{padding:105px 20px 95px}
+.hero-cutout{width:min(310px,65vw)!important;margin-bottom:12px!important}
+.hero h2{font-size:clamp(24px,7vw,33px);letter-spacing:.15em}
+.hero .tagline{font-size:clamp(18px,5vw,24px)}
+.hero .intro{max-width:300px;margin:20px auto;letter-spacing:.1em}
+.hero .goldbtn{font-size:11px;letter-spacing:.12em;padding:15px 22px}
+}
 </style></head><body>
 <header><a class="brand" href="#home" aria-label="HAYVN Sanctuary home"><img src="./assets/hayvn-transparent.svg" alt="HAYVN Studio official gold logo" class="brand-logo"><small>S A N C T U A R Y</small></a><nav class="nav"><a href="#rooms">THE SANCTUARY</a><a href="#rooms">EXPERIENCES</a><a href="#daily">DAILY RITUAL</a><a class="outline" href="#rooms">ENTER SANCTUARY ↗</a></nav></header>
 <main><section class="hero" id="home"><div class="hero-content"><div class="eyebrow">An experience by HAYVN Studio</div><img class="hero-logo" src="./assets/hayvn-transparent.svg" alt="HAYVN official gold emblem and wordmark"><h1 class="visually-hidden">HAYVN</h1><h2>SANCTUARY</h2><p class="tagline">Somewhere to return to yourself.</p><p class="intro">A SPACE TO BREATHE · REFLECT · EXPLORE · BE</p><a class="goldbtn" href="#rooms">ENTER SANCTUARY &nbsp; →</a></div><div class="scrollhint">SCROLL TO EXPLORE ↓</div></section>
