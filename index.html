@@ -290,24 +290,48 @@ const breathe=document.getElementById('breath');if(breathe){const pace=document.
 const music=document.getElementById('timerMusic');if(music){music.setAttribute('aria-label','Play relaxing session music when meditation starts')}
 const journal=document.getElementById('journal');if(journal)journal.setAttribute('spellcheck','true');
 })();
-</script><script id="sanctuary-entrance-ambience">
+</script><audio id="sanctuarySoundtrack" src="./audio/haynsanctuarymusic.mp3" preload="auto" autoplay loop playsinline></audio>
+<script id="sanctuary-entrance-ambience">
 (()=>{'use strict';
-const track=new Audio('./audio/haynsanctuarymusic.mp3');
-track.loop=true;track.autoplay=true;track.preload='auto';track.volume=.42;
-const button=document.getElementById('entranceAudio'),enter=document.getElementById('enterSanctuary'),notice=document.getElementById('soundNotice');
-let desired=true,attempting=false;
-function ui(){const muted=!desired;button.setAttribute('aria-pressed',String(muted));button.setAttribute('aria-label',muted?'Unmute Sanctuary music':'Mute Sanctuary music');button.innerHTML=muted?'<span aria-hidden="true">♫</span> UNMUTE MUSIC':'<span aria-hidden="true">♫</span> MUTE MUSIC'}
-async function start(){if(!desired||attempting||!track.paused)return;attempting=true;try{await track.play();if(notice)notice.textContent='Sanctuary music · Playing'}catch(e){if(notice)notice.textContent='Your browser requires one interaction before sound can begin'}finally{attempting=false;ui()}}
-function mute(){desired=false;track.pause();ui();if(notice)notice.textContent='Sanctuary music · Muted'}
-function unmute(){desired=true;ui();start()}
-button.addEventListener('click',()=>desired?mute():unmute());
-enter?.addEventListener('click',()=>{if(desired)start()});
-['pointerdown','touchstart','keydown'].forEach(type=>document.addEventListener(type,()=>{if(desired)start()},{capture:true,passive:true}));
-window.addEventListener('pageshow',()=>{if(desired)start()});
-document.addEventListener('visibilitychange',()=>{if(document.hidden){track.pause()}else if(desired){start()}});
-const slider=document.getElementById('sanctuaryMusicVolume'),output=document.getElementById('sanctuaryMusicVolumeValue');slider?.addEventListener('input',()=>{track.volume=Number(slider.value)/100;if(output)output.textContent=slider.value+'%'});
-track.addEventListener('error',()=>{if(notice)notice.textContent='Music could not be loaded';});
-ui();start();
-window.HayvnSanctuaryMusic={play:unmute,pause:mute,get volume(){return track.volume},set volume(v){track.volume=Math.max(0,Math.min(1,Number(v)||0))}};
+const audio=document.getElementById('sanctuarySoundtrack');
+const button=document.getElementById('entranceAudio');
+const notice=document.getElementById('soundNotice');
+const enter=document.getElementById('enterSanctuary');
+const slider=document.getElementById('sanctuaryMusicVolume');
+const output=document.getElementById('sanctuaryMusicVolumeValue');
+let enabled=true;
+audio.volume=.42;
+function render(){
+ const playing=!audio.paused;
+ button.setAttribute('aria-pressed',String(!enabled));
+ button.setAttribute('aria-label',enabled?'Mute Sanctuary music':'Unmute Sanctuary music');
+ button.innerHTML=enabled?'<span aria-hidden="true">♫</span> MUTE MUSIC':'<span aria-hidden="true">♫</span> UNMUTE MUSIC';
+ if(notice)notice.textContent=!enabled?'Sanctuary music · Muted':playing?'Sanctuary music · Playing':'Sanctuary music · Ready when your browser permits playback';
+}
+function start(){
+ if(!enabled||!audio.paused)return;
+ // Call play synchronously within a real gesture, as in HAYVN Studio and LUNARA.
+ try{const p=audio.play();if(p&&p.catch)p.catch(()=>{render()});}catch(e){}
+}
+function mute(){enabled=false;audio.pause();render()}
+function unmute(){enabled=true;start();render()}
+button.addEventListener('click',()=>enabled?mute():unmute());
+enter?.addEventListener('click',start);
+const unlock=e=>{
+ if(!enabled||!audio.paused)return;
+ if(e.type==='keydown'&&['Tab','Shift','Control','Alt','Meta'].includes(e.key))return;
+ if(button.contains(e.target))return;
+ start();
+};
+document.addEventListener('pointerdown',unlock,true);
+document.addEventListener('touchstart',unlock,{capture:true,passive:true});
+document.addEventListener('keydown',unlock,true);
+window.addEventListener('pageshow',start);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)start()});
+audio.addEventListener('playing',render);audio.addEventListener('pause',render);
+audio.addEventListener('error',()=>{if(notice)notice.textContent='Sanctuary music · Audio file could not be loaded'});
+slider?.addEventListener('input',()=>{audio.volume=Number(slider.value)/100;if(output)output.textContent=slider.value+'%'});
+render();start();
+window.HayvnSanctuaryMusic={play:unmute,pause:mute,get volume(){return audio.volume},set volume(v){audio.volume=Math.max(0,Math.min(1,Number(v)||0))}};
 })();
 </script></body></html>
