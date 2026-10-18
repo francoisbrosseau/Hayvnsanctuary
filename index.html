@@ -98,6 +98,21 @@ header .nav .outline{font-size:10px!important;letter-spacing:.1em!important;padd
 .hero .intro{font-size:10px!important;letter-spacing:.1em!important;line-height:1.8!important;max-width:320px!important}
 .hero .goldbtn{max-width:100%!important}
 @media(max-width:600px){header{padding:10px 14px!important;min-height:60px!important}header .brand .header-brand{font-size:20px!important}header .nav .outline{font-size:9px!important;letter-spacing:0!important;padding:10px!important}.hero{min-height:calc(100svh - 60px)!important}.hero-content{padding:38px 18px 80px!important}.hero .new-brand{width:min(285px,71vw)!important}.hero .new-brand svg{max-height:195px!important}.hero .new-wordmark{font-size:66px!important}.hero .new-submark{font-size:20px!important}.hero .eyebrow{font-size:9px!important;letter-spacing:.12em!important}.hero .tagline{font-size:29px!important}.hero .goldbtn{padding:15px 24px!important}}
+</style><style id="footer-family-fix">
+.family-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:1020px;margin:35px auto;gap:14px}
+.family-card{min-height:145px;padding:22px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border:1px solid #d4ad6252;background:linear-gradient(155deg,#1c1911,#090908);text-decoration:none!important;color:#dfbd7b!important;transition:border-color .25s,transform .25s}
+.family-card:hover{border-color:#edce89;transform:translateY(-3px)}
+.family-card .family-symbol{font:30px Georgia,serif;color:#e7c57e;line-height:1}
+.family-card strong{font:500 25px Georgia,serif;letter-spacing:.1em}
+.family-card small{font:10px system-ui,sans-serif;letter-spacing:.15em;color:#b9aa8e}
+.family-unlinked{cursor:default}
+.family-note{font:italic 19px Georgia,serif;color:#cdbb9e;letter-spacing:0}
+@media(max-width:700px){.family-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.family-card{min-height:125px}.family-card strong{font-size:19px}}
+/* Brand must never be stretched by earlier conflicting CSS rules */
+.hero .hero-logo{display:block!important;position:static!important;transform:none!important;left:auto!important;top:auto!important;width:min(350px,72vw)!important;height:auto!important;max-height:380px!important;object-fit:contain!important;mix-blend-mode:normal!important;margin:0 auto 20px!important;filter:drop-shadow(0 0 24px #d5ad6633)!important}
+header .brand-logo{display:block!important;position:static!important;transform:none!important;width:80px!important;height:80px!important;object-fit:contain!important;mix-blend-mode:normal!important}
+header .brand{max-width:110px!important;flex-shrink:0!important}
+@media(max-width:600px){header .brand-logo{width:60px!important;height:60px!important}header .brand{max-width:80px!important}.hero .hero-logo{width:min(300px,72vw)!important}}
 </style></head><body>
 <header><a class="brand" href="#home" aria-label="HAYVN Sanctuary home"><img src="./assets/hayvn-transparent.svg" alt="HAYVN Studio official gold logo" class="brand-logo"><small>S A N C T U A R Y</small></a><nav class="nav"><a href="#rooms">THE SANCTUARY</a><a href="#rooms">EXPERIENCES</a><a href="#daily">DAILY RITUAL</a><a class="outline" href="#rooms">ENTER SANCTUARY ↗</a></nav></header>
 <main><section class="hero" id="home"><div class="hero-content"><div class="eyebrow">An experience by HAYVN Studio</div><img class="hero-logo" src="./assets/hayvn-transparent.svg" alt="HAYVN official gold emblem and wordmark"><h1 class="visually-hidden">HAYVN</h1><h2>SANCTUARY</h2><p class="tagline">Somewhere to return to yourself.</p><p class="intro">A SPACE TO BREATHE · REFLECT · EXPLORE · BE</p><a class="goldbtn" href="#rooms">ENTER SANCTUARY &nbsp; →</a></div><div class="scrollhint">SCROLL TO EXPLORE ↓</div></section>
@@ -116,7 +131,12 @@ header .nav .outline{font-size:10px!important;letter-spacing:.1em!important;padd
 <div class="experience" id="daily"><h2>THE DAILY RITUAL</h2><p class="subtitle">A new beginning is available every day.</p><div class="panel center"><p class="eyebrow" id="ritualDate"></p><p class="ritual-quote" id="ritualQuote"></p><p id="ritualPractice" class="small"></p><button class="goldbtn" id="ritualComplete">TAKE THIS MOMENT WITH ME</button><p class="toast" id="ritualStatus"></p></div></div>
 <div class="center hidden" id="backControl"><button class="outline" id="backRooms">← RETURN TO THE ATRIUM</button></div>
 </section></main>
-<footer class="footer"><div class="eyebrow">NATURE MEETS INNER WORLDS</div><p>AN EXPERIENCE BY HAYVN STUDIO · PART OF INFINITE HORIZON</p><p><a href="https://www.hayvnstudio.com/" target="_blank" rel="noopener">HAYVN STUDIO ↗</a><a href="https://wildwiremag.com/" target="_blank" rel="noopener">WILDWIRE ↗</a></p><p>© <span id="year"></span> HAYVN Sanctuary · An independent preview experience</p></footer>
+<footer class="footer"><div class="eyebrow">THE INFINITE HORIZON FAMILY</div><p>AN EXPERIENCE BY HAYVN STUDIO</p><div class="family-grid">
+<a class="family-card" href="https://www.hayvnstudio.com/" target="_blank" rel="noopener"><span class="family-symbol">☾</span><strong>HAYVN</strong><small>STUDIO · HEALING</small></a>
+<a class="family-card" href="https://wildwiremag.com/" target="_blank" rel="noopener"><span class="family-symbol">✧</span><strong>WILDWIRE</strong><small>THE MAGAZINE</small></a>
+<a class="family-card" href="https://github.com/francoisbrosseau/lunara" target="_blank" rel="noopener"><span class="family-symbol">☽</span><strong>LUNARA</strong><small>BY HAYVN</small></a>
+<div class="family-card family-unlinked"><span class="family-symbol">✦</span><strong>RITUWILD</strong><small>RITUAL &amp; CONNECTION</small></div>
+</div><p class="family-note">Explore our connected worlds · Each experience has its own identity</p><p>© <span id="year"></span> HAYVN Sanctuary · Part of Infinite Horizon</p></footer>
 <script>
 'use strict';
 const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));$('#year').textContent=new Date().getFullYear();
